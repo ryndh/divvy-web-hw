@@ -20,7 +20,7 @@ defmodule Homework.MixProject do
   def application do
     [
       mod: {Homework.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:corsica, :logger, :runtime_tools]
     ]
   end
 
@@ -35,6 +35,7 @@ defmodule Homework.MixProject do
     [
       {:absinthe, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
+      {:corsica, "~> 1.0"},
       {:ecto_sql, "~> 3.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},

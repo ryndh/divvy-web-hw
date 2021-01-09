@@ -17,6 +17,8 @@ defmodule HomeworkWeb.Endpoint do
 
   socket("/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]])
 
+  plug(Corsica, origins: "http://localhost:3000", allow_headers: ["accept", "content-type", "authorization"])
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
