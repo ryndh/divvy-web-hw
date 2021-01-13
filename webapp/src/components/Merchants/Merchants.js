@@ -23,7 +23,7 @@ const Merchants = () => {
   }
 
   return (
-    <Fragment>
+    <div>
       <h1>Merchants</h1>
 
       {loadingMerchant && 'Loading Merchants!'}
@@ -47,7 +47,7 @@ const Merchants = () => {
           })}
         </ul>
       </Modal.Content>
-    </Fragment>
+    </div>
   )
 }
 

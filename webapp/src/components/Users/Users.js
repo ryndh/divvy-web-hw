@@ -29,7 +29,7 @@ const Users = () => {
   }
 
   return (
-    <Fragment>
+    <div>
       <h1>Users</h1>
       {loadingUsers && 'Loading!'}
       {queryError && 'Error!'}
@@ -54,7 +54,7 @@ const Users = () => {
           })}
         </ul>
       </Modal.Content>
-    </Fragment>
+    </div>
   )
 }
 

@@ -7,6 +7,7 @@ const globalStyles = css`
     margin: 0;
     ${colorsCss}
 
+    font-size: 14px;
     li {
       list-style: none;
     }
@@ -21,7 +22,6 @@ const globalStyles = css`
     }
   }
 `
-
 const Styles = ({ children }) => {
   return (
     <div>

@@ -45,7 +45,7 @@ const Transactions = () => {
     setType(selectedTransaction.credit ? typeArr[0] : typeArr[1])
   }
   return (
-    <Fragment>
+    <div>
       <h1>Transactions</h1>
       <h2>{t('test-key', "didn't work")}</h2>
       {transactions && (
@@ -101,7 +101,7 @@ const Transactions = () => {
           <Dropdown data={typeArr} handler={selectType} propName='id' initialSelect={selectedTransaction?.credit ? 'credit' : 'debit'} />
         </BasicForm>
       </Modal.Content>
-    </Fragment>
+    </div>
   )
 }
 

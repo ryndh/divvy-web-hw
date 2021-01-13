@@ -3,42 +3,30 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d",
-    "start": "webpack-dev-server -d --hot"
+    "start": "webpack-dev-server -d --hot",
+    "test": "jest"
   },
   "jest": {
-    "setupFiles": [
-      "../../testSetup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "../../jest.config.framework.js"
-    ],
     "globals": {
       "__DivvyEnvironment": true
     },
-    "testRegex": "(/__tests__/.*?(\\.|/)(tests?|spec))\\.jsx?$",
     "moduleDirectories": [
       "node_modules"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/assetMock.js"
     },
-    "snapshotSerializers": [
-      "jest-emotion/serializer"
-    ],
     "moduleFileExtensions": [
       "js",
       "jsx",
       "json"
-    ],
-    "transform": {
-      "\\.(gql|graphql)$": "jest-transform-graphql",
-      ".jsx?$": "babel-jest"
-    }
+    ]
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@emotion/core": "10.0.10",
     "@emotion/styled": "10.0.12",
+    "@testing-library/react": "^11.2.3",
     "apollo-cache-inmemory": "1.6.2",
     "apollo-client": "2.6.2",
     "apollo-link": "1.2.11",
@@ -54,9 +42,9 @@
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.0.21",
     "prop-types": "15.7.2",
-    "react": "16.8.6",
+    "react": "16.9.0",
     "react-apollo": "3.1.5",
-    "react-dom": "16.8.6",
+    "react-dom": "16.9.0",
     "react-hot-loader": "4.11.0",
     "react-i18next": "^11.8.5",
     "react-minimal-pie-chart": "^8.1.0",
@@ -93,6 +81,7 @@
     "@babel/register": "7.4.4",
     "@babel/runtime": "7.4.5",
     "@emotion/babel-preset-css-prop": "10.0.9",
+    "@testing-library/jest-dom": "^5.11.9",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
@@ -124,21 +113,19 @@
     "eslint-plugin-standard": "4.0.0",
     "html-webpack-plugin": "3.2.0",
     "husky": "2.4.1",
-    "jest": "24.8.0",
+    "jest": "26.6.3",
     "jest-chain": "1.1.2",
-    "jest-dom": "3.5.0",
     "jest-expect-message": "1.0.2",
     "jest-fetch-mock": "2.1.2",
     "jest-json-schema": "2.0.2",
     "jest-runner-eslint": "0.7.4",
-    "jsdom": "15.1.1",
+    "jsdom": "16.4.0",
     "prettier": "1.18.2",
     "prettier-eslint-cli": "4.7.1",
     "react-addons-perf": "15.4.2",
     "react-addons-test-utils": "15.6.2",
     "react-stub-context": "0.8.1",
-    "react-test-renderer": "16.8.6",
-    "react-testing-library": "8.0.1",
+    "react-test-renderer": "16.9.0",
     "regenerator-runtime": "0.13.2",
     "webpack": "4.33.0",
     "webpack-cli": "3.3.4",

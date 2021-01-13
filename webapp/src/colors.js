@@ -6,6 +6,7 @@ export const colorsCss = css`
   --modal-background: #a8a0a070;
   --modal-main: white;
   --list-hover-color: #54525236;
+  --nav-background: #d4d2c3;
 `
 
 export const colors = {
@@ -17,5 +18,8 @@ export const colors = {
   },
   list: {
     hover: 'var(--list-hover-color)'
+  },
+  nav: {
+    background: 'var(--nav-background)'
   }
 }
