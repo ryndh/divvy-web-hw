@@ -4,7 +4,7 @@ import { GET_MERCHANTS, ADD_MERCHANT, DELETE_MERCHANT } from '../../services/que
 
 const useMerchantData = () => {
   const [selectedMerchant, setSelectedMerchant] = useState()
-  const { loadingMerchant, queryError, data: merchantData, refetch } = useQuery(GET_MERCHANTS)
+  const { data: merchantData, loadingMerchant, queryError, refetch } = useQuery(GET_MERCHANTS)
   const [addMerchant, { data: mutationData }] = useMutation(ADD_MERCHANT)
   const [deleteMerchant, { data: deleteMerchantData }] = useMutation(DELETE_MERCHANT)
 
@@ -13,14 +13,14 @@ const useMerchantData = () => {
   }
   useEffect(() => {
     refetch()
-  }, [mutationData, deleteMerchantData])
+  }, [mutationData, deleteMerchantData, refetch])
   useEffect(() => {
     if (merchantData) {
       setSelectedMerchant(merchantData.merchants[0])
     }
   }, [merchantData])
 
-  return { selectedMerchant, selectMerchant, deleteMerchant, addMerchant, merchants: merchantData?.merchants, loadingMerchant, queryError }
+  return { addMerchant, deleteMerchant, loadingMerchant, merchants: merchantData?.merchants, queryError, selectMerchant, selectedMerchant }
 }
 
 export default useMerchantData

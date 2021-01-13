@@ -4,6 +4,7 @@
         "semi": "warn",
         "react/jsx-key": "warn",
         "no-unused-vars": "warn",
-        "react/prop-types": "warn"
+        "react/prop-types": "warn",
+        "no-console": "warn"
     }
 }

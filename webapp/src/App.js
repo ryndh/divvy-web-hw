@@ -19,10 +19,10 @@ const App = () => {
         <Styles>
           <Nav />
           <div css={appWrapCss}>
-            <Route component={Home} exact path='/' />
-            <Route component={Users} exact path='/users' />
-            <Route component={Merchants} exact path='/merchants' />
-            <Route component={Transactions} exact path='/transactions' />
+            <Route exact component={Home} path='/' />
+            <Route exact component={Users} path='/users' />
+            <Route exact component={Merchants} path='/merchants' />
+            <Route exact component={Transactions} path='/transactions' />
           </div>
         </Styles>
       </Suspense>

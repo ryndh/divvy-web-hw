@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import BasicForm from '../BasicForm'
-import useUserData from './useUserData'
-import { Modal, useModal } from '../Modal'
+import BasicForm from './BasicForm'
+import {useUserData} from './hooks'
+import { Modal, useModal } from './Modal'
 import { css } from '@emotion/core'
-import { colors } from '../../colors'
+import { colors } from '../colors'
 
 export const interactiveListCss = css`
   cursor: pointer;

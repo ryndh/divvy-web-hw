@@ -24,7 +24,7 @@ const buttonCss = css`
   width: 60%;
   align-self: center;
 `
-const BasicForm = ({ name, fields, onSubmit, children, hiddenVals = {} }) => {
+const BasicForm = ({ children, fields, hiddenVals = {}, name, onSubmit }) => {
   return (
     <div css={formWrapCss}>
       {name && <h1>{name}</h1>}
@@ -45,10 +45,10 @@ const BasicForm = ({ name, fields, onSubmit, children, hiddenVals = {} }) => {
       >
         {({ isSubmitting }) => (
           <Form css={formCss}>
-            {fields.map(({ type, label }, idx) => {
+            {fields.map(({ label, type }, idx) => {
               const key = `${idx}${label}`
               return (
-                <div css={formElementCss} key={key}>
+                <div key={key} css={formElementCss}>
                   <label htmlFor={label}>{label.toUpperCase()}</label>
                   <Field name={label} type={type} />
                 </div>

@@ -4,7 +4,7 @@ import { GET_USERS, ADD_USER, DELETE_USER } from '../../services/queries'
 
 const useUserData = () => {
   const [selectedUser, setSelectedUser] = useState()
-  const { loading: loadingUsers, error: queryError, data: userData, refetch } = useQuery(GET_USERS)
+  const { data: userData, error: queryError, loading: loadingUsers, refetch } = useQuery(GET_USERS)
   const [addUser, { data: mutationData }] = useMutation(ADD_USER)
   const [deleteUser, { data: deleteUserData }] = useMutation(DELETE_USER)
 
@@ -13,14 +13,14 @@ const useUserData = () => {
   }
   useEffect(() => {
     refetch()
-  }, [mutationData, deleteUserData])
+  }, [mutationData, deleteUserData, refetch])
   useEffect(() => {
     if (userData) {
       setSelectedUser(userData?.users[0])
     }
   }, [userData])
 
-  return { selectedUser, selectUser, deleteUser, addUser, users: userData?.users, loadingUsers, queryError }
+  return { addUser, deleteUser, loadingUsers, queryError, selectUser, selectedUser, users: userData?.users }
 }
 
 export default useUserData

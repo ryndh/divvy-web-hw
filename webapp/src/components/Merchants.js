@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react'
-import BasicForm from '../BasicForm'
-import Dropdown from '../Dropdown'
-import useMerchantData from './useMerchantData'
-import { Modal, useModal } from '../Modal'
-import { interactiveListCss } from '../Users/Users'
+import BasicForm from './BasicForm'
+import {useMerchantData} from './hooks'
+import { Modal, useModal } from './Modal'
+import { interactiveListCss } from './Users'
 
 const merchantFields = [
   { type: 'text', label: 'name' },

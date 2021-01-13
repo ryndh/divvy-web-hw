@@ -4,7 +4,7 @@ import { ADD_TRANSACTION, DELETE_TRANSACTION, GET_TRANSACTIONS, EDIT_TRANSACTION
 
 const useTransactionData = () => {
   const [selectedTransaction, setSelectedTransaction] = useState()
-  const { loadingTransaction, queryError, data: transactionData, refetch } = useQuery(GET_TRANSACTIONS)
+  const { data: transactionData, loadingTransaction, queryError, refetch } = useQuery(GET_TRANSACTIONS)
   const [addTransaction, { data: mutationData }] = useMutation(ADD_TRANSACTION)
   const [editTransaction, { data: mutationDataEdit }] = useMutation(EDIT_TRANSACTION)
   const [deleteTransaction, { data: deleteTransactionData }] = useMutation(DELETE_TRANSACTION)
@@ -14,7 +14,7 @@ const useTransactionData = () => {
   }
   useEffect(() => {
     refetch()
-  }, [mutationData, deleteTransactionData, mutationDataEdit])
+  }, [mutationData, deleteTransactionData, mutationDataEdit, refetch])
   useEffect(() => {
     if (transactionData) {
       setSelectedTransaction(transactionData.transactions[0])
@@ -27,7 +27,7 @@ const useTransactionData = () => {
     return obj
   }, {})
 
-  return { transactionsByMerchant, selectedTransaction, selectTransaction, deleteTransaction, addTransaction, editTransaction, transactions: transactionData?.transactions, loadingTransaction, queryError }
+  return { addTransaction, deleteTransaction, editTransaction, loadingTransaction, queryError, selectTransaction, selectedTransaction, transactions: transactionData?.transactions, transactionsByMerchant }
 }
 
 export default useTransactionData

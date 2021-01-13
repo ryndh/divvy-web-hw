@@ -41,16 +41,16 @@ export const useModal = () => {
   return { open, toggleOpen }
 }
 
-const ModalButton = ({ toggleOpen, title = 'Open', onClick = () => { } }) => {
+const ModalButton = ({ onClick = () => { }, title = 'Open', toggleOpen }) => {
   const handleOpen = () => {
     onClick()
     toggleOpen()
   }
   return (
-    <button onClick={handleOpen} type='button'>{title}</button>
+    <button type='button' onClick={handleOpen}>{title}</button>
   )
 }
-const ModalContent = ({ open, toggleOpen, children, title = '' }) => {
+const ModalContent = ({ children, open, title = '', toggleOpen }) => {
   return (
     <>
       {open && (

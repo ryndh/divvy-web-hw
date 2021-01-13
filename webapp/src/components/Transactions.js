@@ -1,17 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PieChart } from 'react-minimal-pie-chart'
-import BasicForm from '../BasicForm'
-import useMerchantData from '../Merchants/useMerchantData'
-import useUserData from '../Users/useUserData'
-import Dropdown from '../Dropdown'
-import useTransactionData from './useTransactionData'
-import { Modal, useModal } from '../Modal'
-import { interactiveListCss } from "../Users/Users"
+import BasicForm from './BasicForm'
+import { useMerchantData, useUserData } from './hooks'
+import Dropdown from './Dropdown'
+import useTransactionData from './hooks/useTransactionData'
+import { Modal, useModal } from './Modal'
+import { interactiveListCss } from "./Users"
 
 const transactionFields = [
-  { type: 'number', label: 'Amount', },
-  { type: 'text', label: 'Description' }
+  { type: 'number', label: 'amount', },
+  { type: 'text', label: 'description' }
 ]
 const defaultLabelStyle = {
   fontSize: '5px',
@@ -67,7 +66,7 @@ const Transactions = () => {
 
       <BasicForm
         fields={transactionFields}
-        hiddenVals={{ merchantId: selectedMerchant, userId: selectedUser, credit: type.id === 'credit', debit: type.id === 'debit' }}
+        hiddenVals={{ merchantId: selectedMerchant?.id, userId: selectedUser?.id, credit: type.id === 'credit', debit: type.id === 'debit' }}
         name="Add Transaction"
         onSubmit={addTransaction}
       >

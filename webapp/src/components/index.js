@@ -1,5 +1,5 @@
 export { default as Home } from './Home'
-export { default as Users } from './Users/Users'
-export { default as Merchants } from './Merchants/Merchants'
-export { default as Transactions } from './Transactions/Transactions'
+export { default as Users } from './Users'
+export { default as Merchants } from './Merchants'
+export { default as Transactions } from './Transactions'
 export { default as Nav } from './Nav'
