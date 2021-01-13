@@ -16,7 +16,7 @@ const useMerchantData = () => {
   }, [mutationData, deleteMerchantData])
   useEffect(() => {
     if (merchantData) {
-      setSelectedMerchant(merchantData.merchants[0].id)
+      setSelectedMerchant(merchantData.merchants[0])
     }
   }, [merchantData])
 

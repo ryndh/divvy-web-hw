@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { Home, Users, Merchants, Nav, Transactions } from './components'
+import Styles from './Styles'
 
 const App = () => {
   return (
     <Router>
-      <div css={layoutStyle}>
-        <Nav />
-        <div className='main-content' css={contentStyle}>
+      <Suspense fallback={<h1>Loading</h1>}>
+        <Styles>
+          <Nav />
           <Route component={Home} exact path='/' />
           <Route component={Users} exact path='/users' />
           <Route component={Merchants} exact path='/merchants' />
           <Route component={Transactions} exact path='/transactions' />
-        </div>
-      </div>
+        </Styles>
+      </Suspense>
     </Router>
   )
 }

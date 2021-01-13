@@ -16,7 +16,7 @@ const useUserData = () => {
   }, [mutationData, deleteUserData])
   useEffect(() => {
     if (userData) {
-      setSelectedUser(userData?.users[0].id)
+      setSelectedUser(userData?.users[0])
     }
   }, [userData])
 

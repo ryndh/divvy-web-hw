@@ -1,17 +1,26 @@
 import React from 'react'
+import { css } from '@emotion/core'
 
-const Dropdown = ({ name, handler, data, propName }) => {
+const dropDownCss = css`
+  display: flex;
+  justify-content: space-between;
+`
+
+const Dropdown = ({ handler, data, propName, initialSelect, name = '' }) => {
   return (
-    <select name={name} onBlur={({ target }) => handler(target.value)}>
-      {data?.map((obj, idx) => {
-        const key = idx
-        return (
-          <option key={key} value={obj.id}>
-            {Array.isArray(propName) ? propName.map((key) => obj[key]).join(' ') : obj[propName]}
-          </option>
-        )
-      })}
-    </select>
+    <div css={dropDownCss}>
+      {name ? <label htmlFor={name} >{name.toUpperCase()}</label> : <span />}
+      <select id={name} initial onBlur={({ target }) => handler(data.find(val => val.id === target.value))}>
+        {data?.map((obj, idx) => {
+          const key = idx
+          return (
+            <option key={key} selected={initialSelect === obj.id} value={obj.id}>
+              {Array.isArray(propName) ? propName.map((key) => obj[key]).join(' ') : obj[propName]}
+            </option>
+          )
+        })}
+      </select>
+    </div>
   )
 }
 

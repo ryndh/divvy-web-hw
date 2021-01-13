@@ -6,6 +6,7 @@ export const GET_USERS = gql`
       id,
       firstName,
       lastName,
+      dob
     }
   }
 `
@@ -32,6 +33,7 @@ export const GET_MERCHANTS = gql`
     merchants {
       id,
       name,
+      description
     }
   }
 `
@@ -58,13 +60,18 @@ query GetTransactions {
   transactions {
     id,
     amount,
-    person: user {
+    description,
+    user {
+      id,
       firstName,
       lastName
     }
-    place: merchant {
-      name
-    }
+    merchant {
+      id,
+      name,
+    },
+    credit,
+    debit,
   }
 }
 `
@@ -72,6 +79,19 @@ query GetTransactions {
 export const ADD_TRANSACTION = gql`
 mutation AddTransaction($amount:Int!, $credit:Boolean!, $debit:Boolean!, $description: String!, $merchantId:ID!, $userId: ID!){
   createTransaction(amount:$amount, credit: $credit, debit:$debit, description:$description, merchantId:$merchantId, userId:$userId){
+    amount,
+    credit,
+    debit,
+    description,
+    merchantId,
+    userId
+  }
+}
+`
+export const EDIT_TRANSACTION = gql`
+mutation EditTransaction($id: ID!, $amount:Int!, $credit:Boolean!, $debit:Boolean!, $description: String!, $merchantId:ID!, $userId: ID!){
+  updateTransaction(id: $id, amount:$amount, credit: $credit, debit:$debit, description:$description, merchantId:$merchantId, userId:$userId){
+    id,
     amount,
     credit,
     debit,
