@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 import BasicForm from './BasicForm'
-import {useMerchantData} from './hooks'
+import { useMerchantData } from './hooks'
 import { Modal, useModal } from './Modal'
 import { interactiveListCss } from './Users'
+import SelectedItem from './SelectedItem'
 
 const merchantFields = [
   { type: 'text', label: 'name' },
@@ -10,6 +12,7 @@ const merchantFields = [
 ]
 
 const Merchants = () => {
+  const { t } = useTranslation()
   const modalData = useModal()
   const { selectedMerchant, addMerchant, deleteMerchant, selectMerchant, loadingMerchant, queryError, merchants } = useMerchantData()
 
@@ -23,18 +26,23 @@ const Merchants = () => {
 
   return (
     <div>
-      <h1>Merchants</h1>
+      {/* <h1>{t('merchants-heading')}</h1> */}
 
-      {loadingMerchant && 'Loading Merchants!'}
-      {queryError && 'Error!'}
-      <div>
-        {selectedMerchant && `Selected Merchant: ${selectedMerchant.name} - ${selectedMerchant.description}`}
-      </div>
-      <button onClick={handleSubmit} type='button'>Delete Merchant</button>
-      <Modal.Button {...modalData} title="Select Merchant" />
-      <BasicForm fields={merchantFields} name='Add Merchant' onSubmit={addMerchant} />
+      {loadingMerchant && t('loading')}
+      {queryError && t('error')}
+      <SelectedItem
+        loading={!selectedMerchant}
+        title="Selected Merchant"
+        obj={{
+          Name: selectedMerchant?.name,
+          Description: selectedMerchant?.description,
+        }}
+      />
+      <button onClick={handleSubmit} type='button'>{t('delete-merchant')}</button>
+      <Modal.Button {...modalData} title={t('select-merchant')} />
+      <BasicForm fields={merchantFields} name={t('add-merchant')} onSubmit={addMerchant} />
 
-      <Modal.Content {...modalData} title='Select Merchant'>
+      <Modal.Content {...modalData} title={t('select-merchant')}>
         <ul>
           {merchants?.map((merchant, idx) => {
             const key = `${merchant.name}${idx}`

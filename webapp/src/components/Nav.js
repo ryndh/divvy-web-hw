@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { colors } from '../colors'
@@ -18,21 +19,22 @@ const listStyleCss = css`
 `
 
 const Nav = () => {
+  const { t } = useTranslation()
   return (
     <Fragment>
       <nav css={navStyleCss}>
         <ul css={listStyleCss}>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to='/'>{t('home-link')}</Link>
           </li>
           <li>
-            <Link to='/users'>Users</Link>
+            <Link to='/users'>{t('users-link')}</Link>
           </li>
           <li>
-            <Link to='/merchants'>Merchants</Link>
+            <Link to='/merchants'>{t('merchants-link')}</Link>
           </li>
           <li>
-            <Link to='/transactions'>Transactions</Link>
+            <Link to='/transactions'>{t('transactions-link')}</Link>
           </li>
         </ul>
       </nav>

@@ -10,7 +10,7 @@ const Dropdown = ({ data, handler, initialSelect, name = '', propName }) => {
   return (
     <div css={dropDownCss}>
       {name ? <label htmlFor={name} >{name.toUpperCase()}</label> : <span />}
-      <select data-testid="dropdown" defaultValue={initialSelect} id={name} onBlur={({ target }) => handler(data.find(val => val.id === target.value))}>
+      <select data-testid='dropdown' defaultValue={initialSelect} id={name} onBlur={({ target }) => handler(data.find(val => val.id === target.value))}>
         {data?.map((obj, idx) => {
           const key = idx
           return (

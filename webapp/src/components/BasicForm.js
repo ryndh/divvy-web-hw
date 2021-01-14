@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { css } from '@emotion/core'
+import { useTranslation } from 'react-i18next'
 
 const formWrapCss = css`
   display: flex;
@@ -25,6 +26,7 @@ const buttonCss = css`
   align-self: center;
 `
 const BasicForm = ({ children, fields, hiddenVals = {}, name, onSubmit }) => {
+  const { t } = useTranslation()
   return (
     <div css={formWrapCss}>
       {name && <h1>{name}</h1>}
@@ -56,7 +58,7 @@ const BasicForm = ({ children, fields, hiddenVals = {}, name, onSubmit }) => {
             })}
             {children}
             <button css={buttonCss} disabled={isSubmitting} type='submit'>
-              Submit
+              {t('submit')}
             </button>
           </Form>
         )}

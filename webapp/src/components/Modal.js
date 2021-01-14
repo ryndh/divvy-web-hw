@@ -20,6 +20,7 @@ const modalCss = css`
   background-color: ${colors.modal.main};
   border-radius: 7px;
   padding: 0px 10px;
+  overflow-y: auto;
 `
 const modalInnerCss = css`
   padding: 15px 5px;

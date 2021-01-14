@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 import BasicForm from './BasicForm'
-import {useUserData} from './hooks'
+import { useUserData } from './hooks'
 import { Modal, useModal } from './Modal'
 import { css } from '@emotion/core'
 import { colors } from '../colors'
+import SelectedItem from './SelectedItem'
 
 export const interactiveListCss = css`
   cursor: pointer;
@@ -18,6 +20,8 @@ const userFields = [
 ]
 
 const Users = () => {
+  const { t } = useTranslation()
+
   const { selectedUser, addUser, deleteUser, selectUser, loadingUsers, queryError, users } = useUserData()
   const modalData = useModal()
   const handleSubmit = () => {
@@ -30,19 +34,24 @@ const Users = () => {
 
   return (
     <div>
-      <h1>Users</h1>
-      {loadingUsers && 'Loading!'}
-      {queryError && 'Error!'}
-      <div>
-        {selectedUser && `Selected User: ${selectedUser.firstName} ${selectedUser.lastName}`}
-      </div>
+      {/* <h1>{t('users-link')}</h1> */}
+      {loadingUsers && t('loading')}
+      {queryError && t('error')}
+      <SelectedItem
+        loading={!selectedUser}
+        title="Selected User"
+        obj={{
+          First_Name: selectedUser?.firstName,
+          Last_Name: selectedUser?.lastName,
+          Date_of_Birth: selectedUser?.dob,
+        }}
+      />
+      <button onClick={handleSubmit} type='button'>{t('delete-user')}</button>
+      <Modal.Button {...modalData} title={t('select-user')} />
 
-      <button onClick={handleSubmit} type='button'>Delete User</button>
-      <Modal.Button {...modalData} title="Select User" />
+      <BasicForm fields={userFields} name={t('add-user')} onSubmit={addUser} />
 
-      <BasicForm fields={userFields} name='Add User' onSubmit={addUser} />
-
-      <Modal.Content {...modalData} title='Select User'>
+      <Modal.Content {...modalData} title={t('select-user')}>
         <ul>
           {users?.map((user, idx) => {
             const key = `${user.firstName}${idx}`

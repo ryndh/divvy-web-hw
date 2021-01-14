@@ -1,3 +1,22 @@
 {
-  "test-key": "testing"
+  "home-page": "Home Page",
+  "merchants-heading": "Merchants",
+  "loading": "Loading...",
+  "error": "Error!",
+  "select-merchant": "Select Merchant",
+  "select-user": "Select User",
+  "select-transaction": "Select Transaction",
+  "add-merchant": "Add Merchant",
+  "add-user": "Add User",
+  "add-transaction": "Add Transaction",
+  "delete-merchant": "Delete Merchant",
+  "delete-user": "Delete User",
+  "delete-transaction": "Delete Transaction",
+  "edit-transaction": "Edit Transaction",
+  "home-link": "Home",
+  "users-link": "Users",
+  "merchants-link": "Merchants",
+  "transactions-link": "Transactions",
+  "selected-transaction": "Selected Transaction",
+  "submit": "Submit"
 }
