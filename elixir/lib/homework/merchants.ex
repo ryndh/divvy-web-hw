@@ -2,7 +2,6 @@ defmodule Homework.Merchants do
   @moduledoc """
   The Merchants context.
   """
-
   import Ecto.Query, warn: false
   alias Homework.Repo
 
@@ -19,6 +18,18 @@ defmodule Homework.Merchants do
   """
   def list_merchants(_args) do
     Repo.all(Merchant)
+  end
+  @doc """
+  Returns the list of merchants.
+
+  ## Examples
+
+      iex> list_merchants([])
+      [%Merchant{}, ...]
+
+  """
+  def get_random_merchants() do
+    Repo.all(Merchant) |> Enum.take_random(3)
   end
 
   @doc """
