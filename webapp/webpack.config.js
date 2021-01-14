@@ -10,7 +10,8 @@ let plugins = [
   new HtmlWebpackPlugin({
     template: './index.ejs',
     title: 'Divvy Coding Challenge',
-    appMountId: 'react-app'
+    appMountId: 'react-app',
+    portalMountId: 'portal-mount'
   })
 ]
 

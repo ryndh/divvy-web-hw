@@ -2,7 +2,7 @@ defmodule Homework.Users do
   @moduledoc """
   The Users context.
   """
-
+  require Logger
   import Ecto.Query, warn: false
   alias Homework.Repo
 
@@ -19,6 +19,18 @@ defmodule Homework.Users do
   """
   def list_users(_args) do
     Repo.all(User)
+  end
+  @doc """
+  Returns the list of users.
+
+  ## Examples
+
+      iex> list_users([])
+      [%User{}, ...]
+
+  """
+  def get_random_users() do
+    Repo.all(User) |> Enum.take_random(3)
   end
 
   @doc """
